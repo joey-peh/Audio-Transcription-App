@@ -1,0 +1,48 @@
+<div class="upload-container">
+  <div class="file-selector">
+    <input
+      type="file"
+      id="audioUpload"
+      (change)="onFileSelect($event)"
+      accept="audio/*"
+      multiple
+      #fileInput
+    />
+    <label for="audioUpload" class="upload-btn">
+      <mat-icon>upload</mat-icon>
+      Upload audio files to transcribe!
+    </label>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <mat-icon>error</mat-icon>
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="selectedFiles.length > 0" class="file-list">
+    <h4>Selected Files:</h4>
+    <div class="file-item" *ngFor="let file of selectedFiles; let i = index">
+      <span
+        >{{ file.name }} | {{ (file.size / 1024 / 1024).toFixed(2) }} MB</span
+      >
+      <button mat-icon-button (click)="removeFile(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="uploadFiles()">
+        <mat-icon>cloud_upload</mat-icon>
+        Upload All
+      </button>
+      <button mat-button (click)="resetUpload()">Clear</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="uploadedTranscriptions.length > 0">
+  <app-result
+    [results]="uploadedTranscriptions"
+    [resultsHeader]="'Transcribed Results'"
+  ></app-result>
+</div>

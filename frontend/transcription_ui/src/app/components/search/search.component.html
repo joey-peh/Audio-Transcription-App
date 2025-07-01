@@ -1,0 +1,33 @@
+<div class="search-engine-container" *ngIf="searchResults$ | async as results">
+  <div
+    class="search-content"
+    [class.has-results]="results.length > 0 && searched"
+  >
+    <mat-card class="search-card">
+      <div style="margin: 10px 0px"></div>
+
+      <div class="search-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Search by audio filename</mat-label>
+          <input
+            matInput
+            placeholder="e.g. meeting_january.mp3"
+            [(ngModel)]="filenameSearch"
+          />
+          <mat-icon matSuffix>audio_file</mat-icon>
+        </mat-form-field>
+
+        <div class="search-actions">
+          <button mat-raised-button color="primary" (click)="onSearch()">
+            <mat-icon>search</mat-icon>
+            Search
+          </button>
+          <button mat-button (click)="resetFilters()">Reset</button>
+        </div>
+      </div>
+    </mat-card>
+
+    <!-- Search Results -->
+    <app-result [results]="results" [searched]="searched"></app-result>
+  </div>
+</div>

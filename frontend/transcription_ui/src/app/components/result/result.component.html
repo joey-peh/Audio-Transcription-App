@@ -1,0 +1,47 @@
+<div class="search-results" *ngIf="searched">
+  <div *ngIf="results.length > 0; else noResults">
+    <div class="results-header">
+      <span class="results-count">{{ getDisplayedHeader() }} </span>
+    </div>
+
+    <mat-card
+      class="result-card"
+      *ngFor="
+        let result of results?.slice(
+          currentPage * pageSize,
+          currentPage * pageSize + pageSize
+        )
+      "
+    >
+      <mat-card-header>
+        <mat-card-subtitle>
+          <mat-icon class="icon-display">audiotrack</mat-icon>
+          {{ result.filename }}</mat-card-subtitle
+        >
+        <mat-card-subtitle>
+          Created: {{ result.created_at }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ result.text }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-paginator
+      [length]="results.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="onPageChange($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+
+  <ng-template #noResults>
+    <div class="no-results">
+      <mat-icon class="no-results-icon">search_off</mat-icon>
+      <h3>No results found</h3>
+      <p>Try adjusting your search criteria</p>
+    </div>
+  </ng-template>
+</div>

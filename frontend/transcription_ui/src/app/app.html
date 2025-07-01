@@ -1,0 +1,12 @@
+<!-- loader -->
+<app-loader></app-loader>
+<!-- base layout -->
+<mat-toolbar>
+  <span>Transcription</span>
+  <span class="spacer"></span>
+  <button mat-button type="button" [routerLink]="['/search']" routerLinkActive="active">Search</button>
+  <button mat-button type="button" [routerLink]="['/transcription']" routerLinkActive="active">Get all transcriptions</button>
+  <button mat-button type="button" [routerLink]="['/upload']" routerLinkActive="active">Upload audio</button>
+  </mat-toolbar
+>
+<div style="margin: 10px"><router-outlet /></div>

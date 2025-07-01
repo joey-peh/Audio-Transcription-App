@@ -1,0 +1,26 @@
+<div>
+  <div
+    *ngIf="transcriptionList?.length === 0; else transcriptionListTemplate"
+    class="no-results"
+  >
+    <mat-icon class="no-results-icon">library_books</mat-icon>
+    <h3>No transcriptions found</h3>
+    <p>Upload audio files to get started</p>
+  </div>
+
+  <ng-template #transcriptionListTemplate>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Filter by transcription</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        (click)="$event.stopPropagation()"
+        (keydown)="$event.stopPropagation()"
+      />
+      <mat-icon matSuffix>filter_list</mat-icon>
+    </mat-form-field>
+    <ng-container>
+      <app-result [results]="filteredTranscriptions"></app-result
+    ></ng-container>
+  </ng-template>
+</div>
