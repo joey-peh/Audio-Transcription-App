@@ -19,7 +19,7 @@
           {{ result.filename }}</mat-card-subtitle
         >
         <mat-card-subtitle>
-          Created: {{ result.created_at }}
+          Created: {{ result.created_at | date: 'dd/MM/yyyy, h:mm:ss a' }}
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -41,7 +41,7 @@
     <div class="no-results">
       <mat-icon class="no-results-icon">search_off</mat-icon>
       <h3>No results found</h3>
-      <p>Try adjusting your search criteria</p>
+      <span>Try adjusting your search criteria</span>
     </div>
   </ng-template>
 </div>

@@ -1,5 +1,4 @@
 .upload-container {
-  margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -7,25 +6,6 @@
 
 .file-selector input[type="file"] {
   display: none;
-}
-
-.upload-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 15px;
-  background: #3f51b5;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.upload-btn:hover {
-  background: #303f9f;
-}
-
-.upload-btn mat-icon {
-  margin-right: 8px;
 }
 
 .file-list {
@@ -61,4 +41,9 @@
 
 .error-message mat-icon {
   margin-right: 8px;
+}
+
+.file-header {
+  padding: 10px 0;
+  text-decoration: underline;
 }

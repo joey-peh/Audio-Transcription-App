@@ -36,7 +36,8 @@ export class UploadComponent implements OnInit {
           filter(([prev, current]) => current.length > prev.length)
         )
         .subscribe(([prev, current]) => {
-          //Compare previous and current value to get the new transcriptions newly added by user
+          //Compares previous and current transcription lists to identify newly added files
+          //Assumes that transcription list are immutable and appended-only
           const newTranscriptions = current.slice(prev.length);
           this.checkForUploadedFiles(newTranscriptions);
         })
@@ -59,7 +60,7 @@ export class UploadComponent implements OnInit {
   }
 
   private checkForUploadedFiles(newTranscriptions: Transcription[]) {
-    //Check if the new transcriptions matches the file user uploaded
+    //Check if the new transcriptions matches the files uploaded
     const relevantTranscriptions = newTranscriptions.filter((t) =>
       this.selectedFiles.map((x) => x.name).includes(t.filename)
     );
@@ -80,6 +81,7 @@ export class UploadComponent implements OnInit {
       this.subs.unsubscribe();
     }
   }
+
   onFileSelect(event: any) {
     this.errorMessage = null;
     const files: FileList = event.target.files;
@@ -94,7 +96,7 @@ export class UploadComponent implements OnInit {
         return false;
       }
 
-      //ensure that there is no duplicate files selected
+      //Ensure that there is no duplicate files selected
       const isDuplicate = this.selectedFiles.some(
         (existingFile) =>
           existingFile.name === file.name &&

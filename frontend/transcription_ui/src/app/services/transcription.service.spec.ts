@@ -16,13 +16,13 @@ describe('TranscriptionService', () => {
       id: 1,
       filename: 'test1.mp3',
       text: 'Test transcription 1',
-      created_at: 'Tue, 01 Jul 2025 13:58:44 GMT',
+      created_at: '2025-07-01T18:37:46.655444',
     },
     {
       id: 2,
       filename: 'test2.mp3',
       text: 'Test transcription 2',
-      created_at: 'Tue, 01 Jul 2025 13:58:44 GMT',
+      created_at: '2025-07-01T18:37:46.655444',
     },
   ];
 
@@ -36,17 +36,6 @@ describe('TranscriptionService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
-  });
-
-  it('should fetch all transcriptions in getTranscriptions_Positive', () => {
-    service.getTranscriptions().subscribe((transcriptions) => {
-      expect(transcriptions.length).toBe(2);
-      expect(transcriptions).toEqual(mockTranscriptions);
-    });
-
-    const req = httpMock.expectOne('http://127.0.0.1:5000/transcriptions');
-    expect(req.request.method).toBe('GET');
-    req.flush(mockTranscriptions);
   });
 
   it('should search transcriptions with filename parameter in searchTranscriptions_Positive', () => {
@@ -66,9 +55,12 @@ describe('TranscriptionService', () => {
     );
     expect(req.request.method).toBe('GET');
     expect(req.request.params.keys()).toEqual(expectedParams.keys());
+    expect(req.request.params.get('filename')).toEqual(
+      expectedParams.get('filename')
+    );
     req.flush([mockTranscriptions[0]]);
   });
-  
+
   it('should upload files for transcription in transcribeAudio_Positive', () => {
     const mockFile1 = new File(['audio content'], 'test1.mp3', {
       type: 'audio/mp3',

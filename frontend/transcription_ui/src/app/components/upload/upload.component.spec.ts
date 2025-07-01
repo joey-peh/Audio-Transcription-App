@@ -9,8 +9,8 @@ describe('UploadComponent', () => {
 
   beforeEach(async () => {
     await TestModule.configureTestingModule({
-      declarations: [UploadComponent]
-    })
+      declarations: [UploadComponent],
+    });
 
     fixture = TestBed.createComponent(UploadComponent);
     component = fixture.componentInstance;
@@ -19,5 +19,16 @@ describe('UploadComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should prevent duplicate files in onFileSelect_Positive', () => {
+    const mockFile = new File(['audio'], 'test.mp3', { type: 'audio/mp3' });
+    component.selectedFiles = [mockFile];
+
+    const event = { target: { files: [mockFile] } };
+    component.onFileSelect(event);
+
+    expect(component.selectedFiles.length).toBe(1);
+    expect(component.errorMessage).toContain('already selected');
   });
 });

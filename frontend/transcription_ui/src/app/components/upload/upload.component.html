@@ -1,5 +1,9 @@
 <div class="upload-container">
   <div class="file-selector">
+    <button mat-raised-button (click)="fileInput.click()">
+      <mat-icon>upload</mat-icon>
+      Drop Your Audio Files Here
+    </button>
     <input
       type="file"
       id="audioUpload"
@@ -7,11 +11,8 @@
       accept="audio/*"
       multiple
       #fileInput
+      style="display: none"
     />
-    <label for="audioUpload" class="upload-btn">
-      <mat-icon>upload</mat-icon>
-      Upload audio files to transcribe!
-    </label>
   </div>
 
   <div *ngIf="errorMessage" class="error-message">
@@ -20,7 +21,7 @@
   </div>
 
   <div *ngIf="selectedFiles.length > 0" class="file-list">
-    <h4>Selected Files:</h4>
+    <div class="file-header">Selected Files:</div>
     <div class="file-item" *ngFor="let file of selectedFiles; let i = index">
       <span
         >{{ file.name }} | {{ (file.size / 1024 / 1024).toFixed(2) }} MB</span
@@ -31,7 +32,7 @@
     </div>
 
     <div class="actions">
-      <button mat-raised-button color="primary" (click)="uploadFiles()">
+      <button mat-raised-button (click)="uploadFiles()">
         <mat-icon>cloud_upload</mat-icon>
         Upload All
       </button>
