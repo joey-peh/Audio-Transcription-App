@@ -1,6 +1,6 @@
 # Audio Transcription Application
 
-A full-stack web application with **Flask (Python)** backend API and **Angular** frontend, containerised with Docker.
+A full-stack web application with **Flask (Python)** backend API and **Angular** frontend, containerized with Docker.
 
 ![Tech Stack](https://img.shields.io/badge/tech%20stack-Flask%20%2B%20Angular-blue)
 
