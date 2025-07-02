@@ -2,19 +2,16 @@
 
 A full-stack web application with **Flask (Python)** backend API and **Angular** frontend, containerized with Docker.
 
-![Tech Stack](https://img.shields.io/badge/tech%20stack-Flask%20%2B%20Angular-blue)
-
 ## Table of Contents
 - [Tech Stack](#tech-stack)
 - [Quick Start with Docker](#quick-start-with-docker)
-- [Installation](#installation)
 - [Development Setup](#development-setup)
 - [Running Tests](#running-tests)
 
 ## Tech Stack
 - **Backend**: Flask REST API
 - **Frontend**: Angular Single-Page Application
-- **Database**: SQLite
+- **Database**: SQLite 
 
 ## Quick Start with Docker
 ### Build and run backend
@@ -29,13 +26,6 @@ cd frontend/transcription_ui
 docker build -t frontend .
 docker run -p 4200:80 frontend
 ```
-
-## Installation
-### Prerequisites
-- Python 3.8+
-- Node.js 18.13+
-- npm 8+ (9+ preferred)
-- Angular CLI (`npm install -g @angular/cli`)
 
 ## Development Setup
 #### Backend (Flask)
