@@ -10,7 +10,7 @@ class Transcription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(Text, nullable=False)
     filename = db.Column(String(255), nullable=False)
-    created_at = db.Column(DateTime, default = datetime.now())
+    created_at = db.Column(DateTime, default = datetime.now, nullable=False)
     
     def to_dict(self):
         return {
