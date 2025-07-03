@@ -1,6 +1,6 @@
 # Audio Transcription Application
-
-A full-stack web application with **Flask (Python)** backend API and **Angular** frontend, containerized with Docker.
+A full-stack web application featuring a **Flask (Python)** backend API and an **Angular** frontend, containerized with Docker for speech-to-text transcription.
+[![transcription-web-application.png](https://i.postimg.cc/hjMCyZGy/transcription-web-application.png)](https://postimg.cc/phhYyZzz)
 
 ## Table of Contents
 - [Tech Stack](#tech-stack)
