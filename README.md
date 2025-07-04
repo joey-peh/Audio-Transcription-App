@@ -49,10 +49,12 @@ ng serve # Start development server
 #### Backend Tests
 ```
 cd backend
+#pip install -r requirements.txt #install if not done
 python -m pytest tests/
 ```
 #### Frontend Tests
 ```
 cd frontend
+#npm install #install if not done
 ng test
 ```
